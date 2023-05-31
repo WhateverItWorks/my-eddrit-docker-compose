@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  eddrit:
+    container_name: 'eddrit'
+    hostname: 'eddrit'
+    user: 65534:65534
+    image: corentingarcia/eddrit:latest
+    #build:
+      #context: .
+      #dockerfile: Dockerfile
+    ports:
+      - '127.0.0.1:8090:8080'
+    restart: 'always'
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+     - eddrit
+networks:
+  eddrit:
